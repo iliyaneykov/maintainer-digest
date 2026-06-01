@@ -1,0 +1,53 @@
+[
+  {
+    "number": 101,
+    "title": "fix: guard against missing config file",
+    "state": "open",
+    "html_url": "https://github.com/example/project/pull/101",
+    "user": {"login": "contributor-a"},
+    "author_association": "CONTRIBUTOR",
+    "labels": [{"name": "bug"}],
+    "created_at": "2026-05-25T09:00:00Z",
+    "updated_at": "2026-05-31T09:00:00Z",
+    "merged_at": null,
+    "draft": false,
+    "additions": 55,
+    "deletions": 12,
+    "changed_files": 3,
+    "body": "Fixes #42."
+  },
+  {
+    "number": 102,
+    "title": "docs: add configuration guide",
+    "state": "open",
+    "html_url": "https://github.com/example/project/pull/102",
+    "user": {"login": "newcomer"},
+    "author_association": "NONE",
+    "labels": [{"name": "documentation"}],
+    "created_at": "2026-05-30T09:00:00Z",
+    "updated_at": "2026-05-30T09:00:00Z",
+    "merged_at": null,
+    "draft": false,
+    "additions": 180,
+    "deletions": 6,
+    "changed_files": 2,
+    "body": "Adds examples for the config file."
+  },
+  {
+    "number": 99,
+    "title": "feat: add release digest command",
+    "state": "closed",
+    "html_url": "https://github.com/example/project/pull/99",
+    "user": {"login": "maintainer"},
+    "author_association": "OWNER",
+    "labels": [{"name": "feature"}],
+    "created_at": "2026-05-15T09:00:00Z",
+    "updated_at": "2026-05-20T09:00:00Z",
+    "merged_at": "2026-05-20T12:00:00Z",
+    "draft": false,
+    "additions": 330,
+    "deletions": 40,
+    "changed_files": 7,
+    "body": "Adds a release digest."
+  }
+]
