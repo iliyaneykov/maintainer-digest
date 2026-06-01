@@ -15,7 +15,9 @@ def load_issues(path: str | Path) -> list[Issue]:
     except json.JSONDecodeError as exc:
         raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
     if not isinstance(data, list):
-        raise ValueError(f"Issue fixture must be a JSON array, got {type(data).__name__} in {path}")
+        raise ValueError(
+            f"Issue fixture must be a JSON array, got {type(data).__name__} in {path}"
+        )
     return [Issue.from_github(item) for item in data]
 
 
@@ -28,5 +30,7 @@ def load_pull_requests(path: str | Path) -> list[PullRequest]:
     except json.JSONDecodeError as exc:
         raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
     if not isinstance(data, list):
-        raise ValueError(f"Pull request fixture must be a JSON array, got {type(data).__name__} in {path}")
+        raise ValueError(
+            f"Pull request fixture must be a JSON array, got {type(data).__name__} in {path}"
+        )
     return [PullRequest.from_github(item) for item in data]

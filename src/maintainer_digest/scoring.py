@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from .models import Issue, PullRequest
 
@@ -27,9 +27,9 @@ MAINTAINER_ASSOCIATIONS = {"MEMBER", "OWNER", "COLLABORATOR"}
 def _age_days(value: datetime | None) -> int:
     if value is None:
         return 0
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     if value.tzinfo is None:
-        value = value.replace(tzinfo=timezone.utc)
+        value = value.replace(tzinfo=UTC)
     return max(0, (now - value).days)
 
 

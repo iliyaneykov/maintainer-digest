@@ -10,8 +10,12 @@ _MD_ESCAPE = str.maketrans({"[": "\\[", "]": "\\]", "(": "\\(", ")": "\\)"})
 
 
 def render_digest(repo: str, issues: Iterable[Issue], prs: Iterable[PullRequest]) -> str:
-    issue_rows = sorted(((score_issue(issue), issue) for issue in issues), reverse=True, key=lambda x: x[0])
-    pr_rows = sorted(((score_pull_request(pr), pr) for pr in prs), reverse=True, key=lambda x: x[0])
+    issue_rows = sorted(
+        ((score_issue(issue), issue) for issue in issues), reverse=True, key=lambda x: x[0]
+    )
+    pr_rows = sorted(
+        ((score_pull_request(pr), pr) for pr in prs), reverse=True, key=lambda x: x[0]
+    )
 
     lines: list[str] = [f"# Maintainer digest for `{repo}`", ""]
     lines.extend(_render_prs(pr_rows[:10]))
@@ -28,8 +32,8 @@ def _render_prs(rows: list[tuple[int, PullRequest]]) -> list[str]:
         size = pr.additions + pr.deletions
         labels = ", ".join(pr.labels) if pr.labels else "no labels"
         lines.append(
-            f"- **{priority_bucket(score)} / {score}** #{pr.number} {pr.title.translate(_MD_ESCAPE)} "
-            f"({labels}; {pr.changed_files} files; {size} lines)"
+            f"- **{priority_bucket(score)} / {score}** #{pr.number} "
+            f"{pr.title.translate(_MD_ESCAPE)} ({labels}; {pr.changed_files} files; {size} lines)"
         )
     lines.append("")
     return lines
@@ -43,8 +47,9 @@ def _render_issues(rows: list[tuple[int, Issue]]) -> list[str]:
         labels = ", ".join(issue.labels) if issue.labels else "no labels"
         suggested = ", ".join(suggest_labels(issue.title, issue.body, issue.labels))
         lines.append(
-            f"- **{priority_bucket(score)} / {score}** #{issue.number} {issue.title.translate(_MD_ESCAPE)} "
-            f"({labels}; suggested: {suggested}; comments: {issue.comments})"
+            f"- **{priority_bucket(score)} / {score}** #{issue.number} "
+            f"{issue.title.translate(_MD_ESCAPE)} ({labels}; "
+            f"suggested: {suggested}; comments: {issue.comments})"
         )
     lines.append("")
     return lines
